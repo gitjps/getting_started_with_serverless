@@ -18,6 +18,7 @@ In the first step we want to get on the IBM Cloud and start an action:
 - enter an *Action Name*, e.g. *hello-world-web-action*
 - click on *Create*
 - click on *Invoke*, you should see the result:
+
 ~~~~
 Results:
 
@@ -32,6 +33,7 @@ Congratulations!
 The next steps is to process an input value (parameter) and return an output depending on the input parameter. If we provide a parameter value, we are greeted. Otherwise we get an error message.
 
 - scroll up and replace the code with
+
 ~~~~
 function main({name}) {
  var msg = 'You did not tell me who you are.';
@@ -41,15 +43,20 @@ function main({name}) {
  return {msg}
 }
 ~~~~
-- Click on *Save* and *Invoke*; we did not provide a parameter so far, the initial value of *msg is returned:
+
+- Click on *Save* and *Invoke*; we did not provide a parameter so far, the initial value of *msg* is returned:
+
 ~~~~
 {
   "msg": "You did not tell me who you are."
 }
 ~~~~
+
+Now we want to provide an input parameter:
 - scroll up and click on *Change Input*
 - replace the content with `{ "name": "Hans"}`
 - click on *Save* and *Invoke*; as we provided the name parameter, it is returned by this action as part of the variable *msg*:
+
 ~~~~
 {
   "msg": "Hello, Hans!"
@@ -57,16 +64,17 @@ function main({name}) {
 ~~~~
 
 ## Turning this Action into a Web Action
-Up until now the action can be used by other services on the IBM Cloud, but it is not accessible to other programs elsewehere or to users who want to invoke the action with there internet browser. THere's only two things to do:
-- replace the line
+Up until now the action can be used by other services on the IBM Cloud, but it is not accessible to other programs elsewehere or to users who want to invoke the action with there internet browser. As a start only the return value needs to be changed slightly so it becomes HTML syntax that web browsers are able to understand:
+
 ~~~~
- return {msg}
-~~~~
-with this line
-~~~~
+function main({name}) {
+ var msg = 'You did not tell me who you are.';
+ if (name) {
+   msg = `Hello, ${name}!`
+ }
  return {body: `<html><body><h3>${msg}</h3></body></html>`}
+}
 ~~~~
-This modifies the return value slightly so it contains a valid HTML syntax that can be processed by a web browser
 
 Now expose the action by defining it as a web action so it gets a URL:
 - click om *Endpoints* on the left,
