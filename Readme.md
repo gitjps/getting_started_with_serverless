@@ -2,10 +2,15 @@
 
 This tutorial is aimed at people with limited knowledge of coding and cloud computing, but interested in getting their first program up and running on the cloud. It is based on *serverless* computing and all steps are done on [IBM Cloud](https://cloud.ibm.com/) (you need to [register](https://cloud.ibm.com/registration) first) using *IBM Cloud Functions*, which is based on the Open Source programming service [OpenWhisk](https://github.com/apache/openwhisk).
 
-## Hello World
-In this step we want to get on the IBM Cloud and start a simple program (also called function in serverless computing and action in Openwhisk). The way actions work is quite simple: the take some input parameters, process them and return something, e.g. an object. 
+This tutotial contains 3 steps to create a simple program (also called function in serverless computing and action in Openwhisk). The way actions work is actually straightforward: they take some input parameters, process them and return something, e.g. a response message. 
 
-In our case the Node.js function takes a string (a name) and returns a "Hello <name>" message.
+![IBM Cloud Functions](IBMCloudFunctions.jpg)
+
+Several programming labguages are supported. In our case a Node.js function takes a string (a name) and returns a **Hello, 'name'** message.
+  
+## Hello World
+
+In the first step we want to get on the IBM Cloud and start an action: 
 
 - go to *[IBM Cloud Functions](https://cloud.ibm.com/functions/)*
 - click on *[Actions](https://cloud.ibm.com/functions/actions)*
